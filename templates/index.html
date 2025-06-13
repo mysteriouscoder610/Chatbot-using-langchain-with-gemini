@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gemini Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .chat-box {
+            background:black;
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .user {
+            text-align: right;
+            color: orange;
+        }
+        .ai {
+            text-align: left;
+            color: rgb(71, 255, 4);
+        }
+        .bo{
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2 class="bo">Gemini Chatbot</h2>
+        {% for message in messages %}
+            <div class="message {{ 'user' if message.type == 'human' else 'ai' }}">
+                <strong>{{ message.type.capitalize() }}:</strong> {{ message.content }}
+            </div>
+        {% endfor %}
+        <form method="post">
+            <input type="text" name="user_input" placeholder="Type your message" style="width: 80%;" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
